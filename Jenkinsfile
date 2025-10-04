@@ -76,6 +76,9 @@ CMD ["npm", "start"]'''
         }
     }
     post {
+        success {
+            archiveArtifacts artifacts: '*snyk-report*, Dockerfile', fingerprint: true
+        }
         always {
             cleanWs(
                 deleteDirs: true, // Delete directories as well
